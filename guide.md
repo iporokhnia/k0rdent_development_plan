@@ -36,11 +36,11 @@ Management Cluster (single-node k0s)
 
 ### Infrastructure
 
-- **Management node:** A Linux VM with a single-node Kubernetes cluster (any CNCF-certified distribution; k0s recommended). Minimum 8 vCPU, 16 GB RAM, 160 GB disk. macOS is not supported for k0s.
+- **Management node:** A Linux VM with a single-node Kubernetes cluster (k0s recommended). Minimum 8 vCPU, 16 GB RAM, 160 GB disk.
 - **OpenStack project** with API access, sufficient quota for:
   - Regional: 1 CP (4 vCPU / 8 GB) + 3 Workers (4 vCPU / 8 GB each)
   - Child: 1 CP (2 vCPU / 4 GB) + 1 Worker (4 vCPU / 8 GB)
-  - Floating IPs, networks, routers (created automatically by CAPO)
+  - Floating IPs, networks, routers will be created automatically by CAPO
 - **SSH keypair** created in OpenStack (referenced in ClusterDeployment configs)
 - **External network** (floating IP pool) available in OpenStack
 - **Ubuntu 22.04 image** uploaded to OpenStack (name: `ubuntu-22.04-x86_64`)
