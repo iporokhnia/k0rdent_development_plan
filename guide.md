@@ -1,7 +1,6 @@
 # k0rdent Enterprise 1.2.2 Installation Guide
 
 **Scope:** Management cluster + Regional cluster (OpenStack) + Child cluster (OpenStack) + Grafana with metrics.
-**Audience:** Kubernetes/DevOps engineers familiar with Helm, kubectl, and OpenStack.
 
 ---
 
@@ -59,7 +58,7 @@ Management Cluster (single-node k0s)
 
 ### DNS (Important for Isolated Environments)
 
-If your OpenStack environment uses internal DNS (e.g., corporate cloud with private Keystone endpoint), you **must** use the internal DNS server in `dnsNameservers` fields of ClusterDeployments. Using public DNS (e.g., `8.8.8.8`) will cause resolution failures for internal endpoints, breaking the OpenStack Cloud Controller Manager (OCCM) on managed clusters.
+If OpenStack environment uses internal DNS, you **must** use the internal DNS server in `dnsNameservers` fields of ClusterDeployments. Using public DNS (e.g., `8.8.8.8`) will cause resolution failures for internal endpoints, breaking the OpenStack Cloud Controller Manager (OCCM) on managed clusters.
 
 ---
 
@@ -71,14 +70,14 @@ The following placeholders are used throughout this guide. Replace them with you
 |---|---|---|
 | `<REGISTRY_USER>` | Mirantis registry username | `myuser` |
 | `<REGISTRY_PASSWORD>` | Mirantis registry password | `mypassword` |
-| `<KEYSTONE_URL>` | OpenStack Keystone endpoint (with `/v3` if possible) | `https://keystone.example.com/v3` |
+| `<KEYSTONE_URL>` | OpenStack Keystone endpoint (with `/v3`) | `https://keystone.example.com/v3` |
 | `<OS_USERNAME>` | OpenStack username | `admin` |
 | `<OS_PASSWORD>` | OpenStack password | `secret` |
 | `<OS_PROJECT_ID>` | OpenStack project ID | `a91e8c57...` |
 | `<OS_PROJECT_NAME>` | OpenStack project name | `my-project` |
 | `<OS_USER_DOMAIN>` | OpenStack user domain name | `Default` |
 | `<SSH_KEY_NAME>` | OpenStack SSH keypair name | `my-keypair` |
-| `<DNS_SERVER>` | DNS server reachable from CAPO-provisioned nodes | `172.18.176.4` |
+| `<DNS_SERVER>` | DNS server reachable from CAPO-provisioned nodes (could be ommited in public clouds) | `172.18.176.4` |
 | `<EXTERNAL_NETWORK>` | OpenStack external network name (FIP pool) | `public` |
 | `<MANAGEMENT_IP>` | Management node IP (or floating IP) | `172.19.116.157` |
 | `<REGIONAL_NAME>` | Name for regional ClusterDeployment (≤15 chars) | `my-regional` |
